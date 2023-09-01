@@ -1,7 +1,12 @@
 #!/bin/bash
 
+
+# get directory where this script resides wherever it is called from
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TOP_DIR=${DIR}/..
+
 echo "*** Making a backup of the configuration file CONF.sh"
-cp CONF.sh CONF-backup.sh
+cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
 echo "*** Pulling Docker Images from docker hub..."
@@ -10,19 +15,19 @@ echo "*** Pulling Docker Images from docker hub..."
 echo "DONE pulling docker images"
 
 echo "*** Starting containers..."
-images/lap/bin/both.sh --db my-test-db-volume --dir full
+${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
 echo "DONE starting containers"
 
 echo "*** Building volume"
-mkdir -p volumes/full/content/wiki-dir
-tar -xzvf dante-deploy.tar.gz  -C volumes/full/content/wiki-dir > tar-extraction-log
+mkdir -p ${DIR}/volumes/full/content/wiki-dir
+tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content/wiki-dir > ${DIR}/tar-extraction-log
 echo "DONE building volume"
 
 echo "*** Generating configuration file directory"
-mkdir -p conf
-source CONF.sh
+mkdir -p ${DIR}/conf
+source ${DIR}/CONF.sh
 
-MWP=conf/mediawiki-PRIVATE.php
+MWP=${DIR}/conf/mediawiki-PRIVATE.php
 
 rm -f ${MWP}
 echo  "<?php \n"   > ${MWP}

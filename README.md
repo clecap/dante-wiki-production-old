@@ -21,9 +21,10 @@ studying performance to cut down on this which probably is massive overprovision
 
 ## Description of Installation
 
-1. Make a suitable local directory `dante`.
+1. Navigate into a directory which shall contain the installation directory.
 2. Download the zip archive at https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip into directory `dante`.
-3. Unzip file `main.zip` into the top-level directory `dante`
+3. Unzip file `main.zip`
+4. Navigate into the newly generated directory `dante-wiki-production-main`
 4. Edit the configuration file `CONF.sh`. The data required in the configuration file is described by comments directly in this file. There is a backup 
 of the original configuration file in `CONF-sample.sh`.
 5. Run DanteWIki installation script `dante-sh` (this may take several minutes).
@@ -31,10 +32,9 @@ of the original configuration file in `CONF-sample.sh`.
 ## Commands for Installation
 
 ```
-mkdir dante
-cd dante
 wget https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip
-unzip -j main.zip
+unzip main.zip
+cd dante-wiki-production-main
 ```
 
 Edit using your favorite editor, for example: ```vi CONF.sh                                   ```
