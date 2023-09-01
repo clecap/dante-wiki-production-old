@@ -34,9 +34,9 @@ source ${DIR}/CONF.sh
 MWP=${DIR}/conf/mediawiki-PRIVATE.php
 
 rm -f ${MWP}
-echo  "<?php \n"   > ${MWP}
-echo "$wgPasswordSender='${SMTP_SENDER_ADDRESS}';          // address of the sending email account                            " >> ${MWP}
-echo "$wgSMTP = [                                                                                                             " >> ${MWP}
+echo  "<?php "   > ${MWP}
+echo "\$wgPasswordSender='${SMTP_SENDER_ADDRESS}';          // address of the sending email account                            " >> ${MWP}
+echo "\$wgSMTP = [                                                                                                             " >> ${MWP}
 echo  "  'host'     => '${SMTP_HOSTNAME}',                 // hostname of the smtp server of the email account  " >> ${MWP}
 echo  "  'IDHost'   => 'localhost',                        // sub(domain) of your wiki                                             " >> ${MWP}
 echo  "  'port'     => ${SMTP_PORT},                       // SMTP port to be used      " >> ${MWP}
