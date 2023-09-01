@@ -8,7 +8,7 @@ TOP_DIR=${DIR}/..
 cd ${TOP_DIR}
 
 echo "*** Getting fresh source..."
-rm -f ${TOPD_DIR}/main.zip
+rm -f ${TOP_DIR}/main.zip
 wget https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip
 echo "DONE getting fresh source"
 
