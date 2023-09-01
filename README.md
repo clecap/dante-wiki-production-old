@@ -37,6 +37,10 @@ wget https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip
 unzip -j main.zip
 ```
 
+Edit using your favorite editor, for example: ```vi CONF.sh                                   ```
+
+```./install-dante.sh```
+
 # Running DanteWiki
 
 ## Local Installation Only

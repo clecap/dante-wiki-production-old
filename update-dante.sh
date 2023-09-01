@@ -12,3 +12,6 @@ echo "*** Copying in preserved old configuration..."
 cp -f CONF-backup.sh CONF.sh
 echo "DONE copying in preserved old configuration"
 
+echo "*** Running installer again..."
+source ./install-dante.sh
+echo "DONE running installer again"
