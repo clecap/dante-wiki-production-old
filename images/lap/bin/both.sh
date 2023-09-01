@@ -61,6 +61,8 @@ export NETWORK_NAME=dante-network
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
+
+
 # start the DB
 printf "\n\n****** Part 1: Starting DB container using specification ${DB_SPEC}\n"
 ${DIR}/../../my-mysql/bin/run.sh ${DB_SPEC}
