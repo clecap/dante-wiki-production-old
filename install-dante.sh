@@ -32,7 +32,6 @@ mkdir -p ${DIR}/conf
 source ${DIR}/CONF.sh
 
 MWP=${DIR}/conf/mediawiki-PRIVATE.php
-
 rm -f ${MWP}
 echo  "<?php "   > ${MWP}
 echo "\$wgPasswordSender='${SMTP_SENDER_ADDRESS}';          // address of the sending email account                            " >> ${MWP}
@@ -44,6 +43,19 @@ echo  "  'username' => '${SMTP_USERNAME}',                 // username of the em
 echo  "  'password' => '${SMTP_PASSWORD}',                 // password of the email account   " >> ${MWP}
 echo  "  'auth'     => true                                // shall authentisation be used    " >> ${MWP}
 echo "]; ?>  " >> ${MWP}
+
+
+CUS=${DIR}/conf/customize-PRIVATE.sh
+rm -f ${CUS}
+echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"        > ${CUS}
+echo "MYSQL_DUMP_USER=${MYSQL_DUMP_USER}"                >> ${CUS}
+echo "MYSQL_DUMP_PASSWORD=${MYSQL_DUMP_PASSWORD}"        >> ${CUS}
+echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
+echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
+echo "MW_SITE_NAME='${MW_SITE_NAME}'                     >> ${CUS}
+
+
+
 
 echo "*** Initializing Database"
 
