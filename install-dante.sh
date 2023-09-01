@@ -5,7 +5,7 @@ cp CONF.sh CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
 echo "*** Pulling Docker Images from docker hub..."
-  docker pull clecap/my-lap:latest
+  docker pull clecap/lap:latest
   docker pull clecap/my-mysql:latest
 echo "DONE pulling docker images"
 
