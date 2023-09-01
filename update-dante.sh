@@ -6,7 +6,7 @@ wget https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip
 echo "DONE getting fresh source"
 
 echo "*** Unzipping source..."
-unzip -j main.zip
+unzip -o -j main.zip
 echo "DONE unzipping fresh source"
 
 echo "*** Copying in preserved old configuration..."
