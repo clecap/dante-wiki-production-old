@@ -52,7 +52,7 @@ echo "MYSQL_DUMP_USER=${MYSQL_DUMP_USER}"                >> ${CUS}
 echo "MYSQL_DUMP_PASSWORD=${MYSQL_DUMP_PASSWORD}"        >> ${CUS}
 echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
 echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
-echo "MW_SITE_NAME='${MW_SITE_NAME}'                     >> ${CUS}
+echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 
 
 
