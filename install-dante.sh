@@ -24,7 +24,7 @@ echo "DONE starting containers"
 
 echo "*** Building volume"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
-tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content/wiki-dir > ${DIR}/tar-extraction-log
+tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content/ > ${DIR}/tar-extraction-log
 echo "DONE building volume"
 
 echo "*** Generating configuration file directory"
