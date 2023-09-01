@@ -104,7 +104,7 @@ docker run -d --name ${CONTAINER_NAME} \
   ${IMAGE_NAME}  `
 
 
-if [ `uname` == "Darwin"]; then 
+if [ `uname` == "Darwin" ]; then 
   echo ""; echo "*** Attempting to start a local Chrome browser - this may fail"; echo "";
 
   # DIR_NAME is empty and we are working on a volume
