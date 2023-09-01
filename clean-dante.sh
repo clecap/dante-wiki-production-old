@@ -6,10 +6,10 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "*** Cleaning up docker ressources generated..."
-  docker container stop clecap/my-lap -t 0
-  docker container rm clecap/my-lap
-  docker container stop clecap/my-mysql -t 0
-  docker container rm clecap/my-mysql
+  docker container stop my-lap-container -t 0
+  docker container rm my-lap-container
+  docker container stop my-mysql -t 0
+  docker container rm my-mysql
   docker network   rm dante-network
   docker volume rm my-test-db-volume
 echo "DONE cleaning up docker ressources generated"
