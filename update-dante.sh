@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "*** Getting fresh source..."
+rm -f main.zip
 wget https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip
 echo "DONE getting fresh source"
 
