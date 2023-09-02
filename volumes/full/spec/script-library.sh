@@ -32,7 +32,7 @@ addDatabase () {
   local MYSQL_ROOT_PASSWORD=$4
   local DB_CONTAINER=$5
  
-  printf "\n * addDatabase: Making a database ${MY_DB_NAME} with user ${MY_DB_USER} and password ${MY_DB_PASS} \n"
+  printf "\n * addDatabase: Making a database ${MY_DB_NAME} with user ${MY_DB_USER} and password ${MY_DB_PASS} in container ${DB_CONTAINER}\n"
 
 # TODO: Adapt the permissions granted to the specific environment and run-time conditions.
 # TODO: CURRENTLY We ARE NOT USING A MYSQL_ROOT_PASSWORD (the empty passowrd works !!!)
