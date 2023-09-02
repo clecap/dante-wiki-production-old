@@ -4,7 +4,7 @@
 # Driver function which initializes the MediaWiki database and generates a local settings file
 #
 
-source ./script-library.sh
+source script-library.sh
 
 
 MW_SITE_NAME=$1

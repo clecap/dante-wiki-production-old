@@ -97,16 +97,20 @@ You may want to change the port numbers to the standard 443 (for https) and 80 (
 
 ## How to Make These Configuration Changes
 
+You can enter the containers for introspection or configuration change by shell commands via
+
+`docker exec -it my-lap-container /bin/ash`
+`docker exec -it my-mysql /bin/ash`
+
+There you have an Alpine shell (ash) and can navigate the container Os as needed.
+
+Note, that the changes you make are persistent only as long as the lifetime of the container.
+
+To prevent this, we will provide some automated shell scripts for the standard cases. This still has to be done.
 
 
 
 # TEXTGRAB
-
-There now remain two problems you might want to solve. For a person with some IT skills, they are pretty easy to solve
-and others may contact us in the future for some setup service and support.
-
-
-
 
 * https://localhost:4443/wiki-dir/FAQ
 
@@ -132,10 +136,6 @@ From any other machine via
 
 # Running DanteWiki
 
-## Local Installation Only
-
-
-## Network-based Installation
 
 
 # Backup and Restore of DanteWiki
@@ -143,10 +143,9 @@ From any other machine via
 DanteWiki is TBD
 
 
-
 # Updating DanteWiki
 
 DanteWiki is software in development. As it follows the perpetual-beta philosophy of Web 2.0 we will see updates.
-For small updates you can execute ùpdate-dante.sh`. 
+For small updates you can execute `update-dante.sh`. 
 
 It is good operational practice to make a backup of data before every update.
