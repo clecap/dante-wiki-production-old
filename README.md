@@ -53,29 +53,54 @@ For a first test of the connectivity try to access the webserver at
 http://localhost:8080/wiki-dir/FAQ via `browser`, `wget` or `curl`.
 The DanteWiki should be accessible at http://localhost:8080/wiki-dir/index.php
 
-# Further Configuration
+# Further Configuration Changes
 
-Right now you can already use DanteWiki locally (i.e. on the installation machine) using the http protocol. However,
-there are still two restrictions.
+Right now you can already use DanteWiki through the http protocol. However,
+serving it via http instead of https is still a restriction. ***First*** using http makes the system unsafe, as passwords 
+and data could be eavesdropped by an attacker. ***Second*** some features of the browser are only available to
+web pages which are serverd via https. The automatic window placement on external monitors is just one of several examples.
+***Third*** the configuration of DanteWiki web server currently uses a non-trusted certificate, since I cannot know
+the domain under which you want to run it. This certificate produces a browser warning when accessing the service via https.
 
-**Local use only:** You have to be logged on to the installation machine in order to use DanteWiki. This is not a problem if you want to
-use DanteWiki only for your own purposes. You will still be able to download documents from other DanteWikis but you
-will not be able to use all features of DanteWiki for distributing, publishing and sharing your documents with others.
+Therefore you will want to make DanteWiki available via https. 
 
-* The access via http is not secure. So long as you use 
+For this, three solutions are available. The optimal solution depends on your use case and your IT skills.
+
+## https Solution: Reverse Proxy
+
+This is the most secure and convenient solution. However, it needs the most IT skills to set up.
+Here, you will
+* set up a reverse proxy which directs the user to the DanteWiki web server and
+* block access to ports 4443 and 8080 on the local machine.
+
+## https Solution: Server Certificate
+
+Here, you will
+* buy a web server certificate
+* install the certificate into DanteWiki web server and
+* change the configuration of DanteWiki web server to make the service available on port 443 and
+* change the configuration of DanteWiki web server to redirect an access to port 8080 to port 443
+
+## https Solution: Localhost Certificate
+
+Here, you will
+* generate a certificate for localhost using mkcert and
+* install the certificate for localhost on DanteWiki web server
+
+## Port Change
+
+We configured DanteWiki web server to use ports 4443 (for https) and 8080 (for http), as these ports most likely are
+available on the target machine. However, these ports are not completely standard and require entering the port
+number as part of the URL.
+
+You may want to change the port numbers to the standard 443 (for https) and 80 (for http).
+
+## How to Make These Configuration Changes
 
 
 
 
-## Solution: Reverse Proxy
-
-
-## Solution: Full Fledged Server
-
-
-## Solution: Localhost Certificate
-
-
+# TEXTGRAB
 
 There now remain two problems you might want to solve. For a person with some IT skills, they are pretty easy to solve
 and others may contact us in the future for some setup service and support.
