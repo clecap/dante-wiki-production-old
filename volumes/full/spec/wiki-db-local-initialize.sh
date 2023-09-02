@@ -10,10 +10,10 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${DIR}/script-library.sh
 
 
-MW_SITE_NAME=$1
 MW_SITE_SERVER=$2
 SITE_ACRONYM=$3
 WK_PASS=$4
+MY_SQL_ROOT_PASSWORD=$5
 
 MOUNT="/var/www/html"
 VOLUME_PATH=wiki-dir
@@ -24,7 +24,7 @@ DB_USER=user${SITE_ACRONYM}
 DB_NAME=DB_${SITE_ACRONYM}
 DB_PASS=`openssl rand -base64 14`
 
-addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS}
+addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER}
 
 removeLocalSettings ${LAP_CONTAINER} ${MOUNT} ${VOLUME_PATH}
 
