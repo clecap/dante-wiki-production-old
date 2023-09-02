@@ -4,7 +4,10 @@
 # Driver function which initializes the MediaWiki database and generates a local settings file
 #
 
-source script-library.sh
+# get directory where this script resides wherever it is called from
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source ${DIR}/script-library.sh
 
 
 MW_SITE_NAME=$1
