@@ -1,10 +1,8 @@
 #!/bin/bash
 
-
 # get directory where this script resides wherever it is called from
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP_DIR=${DIR}/..
-
 
 
 rm ${TOP_DIR}/main.zip
@@ -44,7 +42,6 @@ echo  "  'password' => '${SMTP_PASSWORD}',                 // password of the em
 echo  "  'auth'     => true                                // shall authentisation be used    " >> ${MWP}
 echo "]; ?>  " >> ${MWP}
 
-
 CUS=${DIR}/conf/customize-PRIVATE.sh
 rm -f ${CUS}
 echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"        > ${CUS}
@@ -53,9 +50,6 @@ echo "MYSQL_DUMP_PASSWORD=${MYSQL_DUMP_PASSWORD}"        >> ${CUS}
 echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
 echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
-
-
-
 
 echo "*** Initializing Database"
 
