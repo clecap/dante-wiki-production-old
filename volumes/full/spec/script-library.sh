@@ -18,7 +18,7 @@ DROP DATABASE ${MY_DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
 MYSQLSTUFF
 
   EXIT_CODE=$?
-  printf "DONE: Exit code of dropDatabase generated database call: ${EXIT_CODE}"
+  printf "DONE: Exit code of dropDatabase generated database call: ${EXIT_CODE} \n\n"
 }
 #endregion
 
@@ -40,15 +40,15 @@ docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <
 CREATE DATABASE IF NOT EXISTS ${MY_DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
 CREATE USER IF NOT EXISTS ${MY_DB_USER}@'%' IDENTIFIED BY '${MY_DB_PASS}';
 CREATE USER IF NOT EXISTS ${MY_DB_USER}@localhost IDENTIFIED BY '${MY_DB_PASS}';
--- CREATE USER IF NOT EXISTS ${MY_DB_USER}@'0.0.0.0/0.0.0.0' IDENTIFIED BY '${MY_DB_PASS}';
+CREATE USER IF NOT EXISTS ${MY_DB_USER}@'0.0.0.0/0.0.0.0' IDENTIFIED BY '${MY_DB_PASS}';
 GRANT ALL PRIVILEGES ON ${MY_DB_NAME}.* TO '${MY_DB_USER}'@'%';
 GRANT ALL PRIVILEGES ON ${MY_DB_NAME}.* TO '${MY_DB_USER}'@'localhost';
--- GRANT ALL PRIVILEGES ON ${MY_DB_NAME}.* TO '${MY_DB_USER}'@'0.0.0.0/0.0.0.0';
+GRANT ALL PRIVILEGES ON ${MY_DB_NAME}.* TO '${MY_DB_USER}'@'0.0.0.0/0.0.0.0';
 FLUSH PRIVILEGES;
 MYSQLSTUFF
 
 EXIT_CODE=$?
-printf "DONE: Exit code of addDatabase generated database call: ${EXIT_CODE}\n"
+printf "DONE: Exit code of addDatabase generated database call: ${EXIT_CODE}\n\n"
 }
 # endregion
 
