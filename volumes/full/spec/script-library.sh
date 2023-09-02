@@ -161,6 +161,8 @@ echo "shell result $EXIT_VALUE"
 if [ "$EXIT_VALUE" == "0" ]; then
   printf "\e[1;31m* SUCCESS:  ${MOUNT}/${VOLUME_PATH}/LocalSettings.php  generated \e[0m"
 else
+#  printf "\e[1;41m* ERROR:  Could not generate ${MOUNT}/${VOLUME_PATH}/LocalSettings.php - *** ABORTING \e[0m \n"
+  printf "\033[0;31mHello World! red\033[0m\n"
   printf "\e[1;41m* ERROR:  Could not generate ${MOUNT}/${VOLUME_PATH}/LocalSettings.php - *** ABORTING \e[0m \n"
 fi
 }
