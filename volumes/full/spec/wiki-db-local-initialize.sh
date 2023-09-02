@@ -9,11 +9,13 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source ${DIR}/script-library.sh
 
-
+MW_SITE_NAME=$1
 MW_SITE_SERVER=$2
 SITE_ACRONYM=$3
 WK_PASS=$4
 MY_SQL_ROOT_PASSWORD=$5
+
+echo "*** Runnding wiki-db-local-initalize.sh on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS} ${MY_SQL_ROOT_PASSWORD}
 
 MOUNT="/var/www/html"
 VOLUME_PATH=wiki-dir

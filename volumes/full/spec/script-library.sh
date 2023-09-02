@@ -32,7 +32,7 @@ addDatabase () {
   local MYSQL_ROOT_PASSWORD=$4
   local DB_CONTAINER=$5
  
-  printf "\n * addDatabase: Making a database ${MY_DB_NAME} with user ${MY_DB_USER} and password ${MY_DB_PASS} in container ${DB_CONTAINER}\n"
+  printf "\n*** addDatabase: Making a database ${MY_DB_NAME} with user ${MY_DB_USER} and password ${MY_DB_PASS} in container ${DB_CONTAINER}\n"
 
 # TODO: Adapt the permissions granted to the specific environment and run-time conditions.
 # TODO: CURRENTLY We ARE NOT USING A MYSQL_ROOT_PASSWORD (the empty passowrd works !!!)
@@ -63,7 +63,10 @@ removeLocalSettings () {
   local MOUNT=$2 
   local VOLUME_PATH=$3
 
+  printf "\n*** removeLocalSettings:\n"
   docker exec ${LAP_CONTAINER} rm -f ${MOUNT}/${VOLUME_PATH}/LocalSettings.php      # remove to have a clean start for install routines, ignore if not existant
+  EXIT_CODE=$?
+  printf "DONE: Exit code of removeLocalSettings docker exec call: ${EXIT_CODE}\n"
 }
 
 
@@ -81,7 +84,8 @@ runMWInstallScript () {
   local SITE_ACRONYM=$3
   local WK_PASS=$4
 
- 
+  echo "*** Running runMWInstallScript on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS}"
+
   local WK_USER="Admin"
 
   MEDIAWIKI_DB_HOST=my-mysql
@@ -118,7 +122,7 @@ echo  "   MEDIAWIKI_DB_NAME            ${MEDIAWIKI_DB_NAME}"
 echo  "   MEDIAWIKI_DB_PORT            ${MEDIAWIKI_DB_PORT}" 
 echo  "   MEDIAWIKI_DB_USER            ${MEDIAWIKI_DB_USER}"
 echo  "   MEDIAWIKI_DB_PASSWORD        ${MEDIAWIKI_DB_PASSWORD}"
-echo  "...MEDIAWIKI_RUN_UPDATE_SCRIPT  ${MEDIAWIKI_RUN_UPDATE_SCRIPT}"
+echo  "   MEDIAWIKI_RUN_UPDATE_SCRIPT  ${MEDIAWIKI_RUN_UPDATE_SCRIPT}"
 echo  ""
 
 echo "SITE Parameters are: "
@@ -161,9 +165,7 @@ echo "shell result $EXIT_VALUE"
 if [ "$EXIT_VALUE" == "0" ]; then
   printf "\e[1;31m* SUCCESS:  ${MOUNT}/${VOLUME_PATH}/LocalSettings.php  generated \e[0m"
 else
-#  printf "\e[1;41m* ERROR:  Could not generate ${MOUNT}/${VOLUME_PATH}/LocalSettings.php - *** ABORTING \e[0m \n"
-  printf "\033[0;31mHello World! red\033[0m\n"
-  printf "\e[1;41m* ERROR:  Could not generate ${MOUNT}/${VOLUME_PATH}/LocalSettings.php - *** ABORTING \e[0m \n"
+  printf "\033[0;31m *ERROR:  Could not generate ${MOUNT}/${VOLUME_PATH}/LocalSettings.php - *** ABORTING \033[0m\n"
 fi
 }
 # endregion
