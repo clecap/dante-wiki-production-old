@@ -28,6 +28,8 @@ DB_PASS=`openssl rand -base64 14`
 
 echo "******************************************** DB_CONTAINER IS: ${DB_CONTAINER} ****\n"
 
+dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MY_SQl_ROOT_PASSWORD}
+
 addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER}
 
 removeLocalSettings ${LAP_CONTAINER} ${MOUNT} ${VOLUME_PATH}

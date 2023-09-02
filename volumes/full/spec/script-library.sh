@@ -11,7 +11,7 @@ dropDatabase () {
   local DB_CONTAINER=$2
   local MYSQL_ROOT_PASSWORD=$3
   
-  printf "\n * dropDatabase: Dropping database ${MY_DB_NAME} \n"
+  printf "\n\n*** dropDatabase: Dropping database ${MY_DB_NAME} \n"
 
   docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
 DROP DATABASE ${MY_DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
