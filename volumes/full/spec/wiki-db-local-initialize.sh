@@ -26,6 +26,8 @@ DB_USER=user${SITE_ACRONYM}
 DB_NAME=DB_${SITE_ACRONYM}
 DB_PASS=`openssl rand -base64 14`
 
+echo "******************************************** DB_CONTAINER IS: ${DB_CONTAINER} ****\n"
+
 addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER}
 
 removeLocalSettings ${LAP_CONTAINER} ${MOUNT} ${VOLUME_PATH}
