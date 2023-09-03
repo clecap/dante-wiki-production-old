@@ -53,8 +53,9 @@ echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 echo "DONE generating configuration file directory"
 
 
-
-
+echo ""; echo "*** Initial contents copied to template directory"
+cp ${DIR}/initial-contents.xml ${DIR}/volumes/full/content/wiki-dir/initial-contents.xml
+echo "DONE copying"
 
 
 echo ""; echo "*** Building docker volume"
