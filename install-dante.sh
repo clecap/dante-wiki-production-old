@@ -28,13 +28,10 @@ echo "DONE building docker volume"
 echo "we have a PWD of: ${PWD} and a DIR of ${DIR}"
 echo ""
 
+docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
 
-docker run --rm  --volume ${LAP_VOLUME}:/dest -w /source alpine chown apache.apache /dest
+docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R apache.apache /dest
 
-
-exit
-
-docker run --rm  --user 100 --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
 
 # docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir alpine cp CONF.sh /dest
 
