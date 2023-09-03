@@ -25,7 +25,8 @@ docker volume create ${LAP_VOLUME}
 echo "DONE building docker volume"
 
 #  -rm  automagically remove container when it exits
-docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir  alpine cp -R myfile.txt /var/www/html/wiki-dir
+#docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir  alpine cp -R myfile.txt /var/www/html/wiki-dir
+
 docker run --rm -volume ${DIR}/volumes/full/content:/source -volume ${LAP_VOLUME}:/dest -w /source alpine cp -R * /dest
 
 
