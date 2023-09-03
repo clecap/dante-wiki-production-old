@@ -8,7 +8,7 @@ TOP_DIR=${DIR}/..
 
 
 
-USER=`whoami`
+USER=apache
 
 
 LAP_CONTAINER=my-lap-container
