@@ -29,14 +29,7 @@ echo "DONE starting containers"
 
 echo ""; echo "*** Building volume"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
-# stop upon a tar error (otherwise the error list gets too long)
-set -e
-
-exit
-
-
-tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
-set +e
+tar -xzvf --no-same-owner ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
 echo "DONE building volume"
 
 echo ""; echo "*** Generating configuration file directory"
