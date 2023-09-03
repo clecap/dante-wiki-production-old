@@ -71,11 +71,11 @@ cleanMost () {
 }
 
 display () {
-  echo "\n\n*** Displaying existing docker resources..."
+  echo "";echo ""; echo "*** Displaying existing docker resources..."
   docker container ls
   docker network ls
   docker image ls
-  echo "DONE displaying docker resources\n"
+  echo "DONE displaying docker resources"
 }
 
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## The original of this file is in dante-wiki-production
+
 # get directory where this script resides wherever it is called from
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP_DIR=${DIR}/..
@@ -15,6 +17,11 @@ echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
   docker pull clecap/my-mysql:latest
 echo "DONE pulling docker images"
+
+echo "*** Retagging docker images into local names for install mechanisms..."
+  docker tag clecap/lap:latest lap
+  docker tag clecap/my-mysql:latest my-mysql
+echo "DONE "
 
 echo "*** Starting containers..."
 ${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full

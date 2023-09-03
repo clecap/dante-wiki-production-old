@@ -4,7 +4,8 @@
 
 We can enter the containers for introspection by shell commands via
 
-docker exec -it my-lap-container /bin/ash
+`docker exec -it my-lap-container /bin/ash`
+`docker exec -it my-mysql /bin/ash`
 
 
 # Network access
