@@ -22,19 +22,6 @@ In the lap container, the Apache server is running under user id apache and grou
 Directories 777
 Files 6
 
-
-### IMportant directories for writing:
-
-* Parisfal/log
-
-
-
-
-
-
-
-
-
 # Network access
 
 Provided that these port numbers are free, you can access...
