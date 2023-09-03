@@ -1,14 +1,22 @@
 #!/bin/bash
 
+# password of the Dante Wiki user   Admin
+ADMIN_PASSWORD=adminpassword
+
+SITE_ACRONYM=acro
+
 # The root password to be installed for the MYSQL database
-MYSQL_ROOT_PASSWORD=password
+MYSQL_ROOT_PASSWORD=sqlrootpassword
 
 # The name of a user which will be entitled to do a dump of the entire mysql installation
 MYSQL_DUMP_USER=username
 MYSQL_DUMP_PASSWORD=otherpassword
 
-MW_SITE_SERVER=https://www.clemenscap.de
+# TO BE DETERMINED experimentally still....
+# https://localhost:4443 or https://dante.informatik.uni-rostock.de
+MW_SITE_SERVER=https://localhost:4443/wiki-dir
 
+# currently NO blank in below name
 MW_SITE_NAME="MatheWiki"
 
 #

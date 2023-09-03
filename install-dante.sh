@@ -47,7 +47,7 @@ echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"        > ${CUS}
 echo "MYSQL_DUMP_USER=${MYSQL_DUMP_USER}"                >> ${CUS}
 echo "MYSQL_DUMP_PASSWORD=${MYSQL_DUMP_PASSWORD}"        >> ${CUS}
 echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
-echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
+echo "MW_SITE_SERVER=${MW_SITE_SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 
 echo "DONE generating configuration file directory"
@@ -113,7 +113,7 @@ echo ""; echo "*** Initializing Database"
 
 # volumes/full/spec/wiki-db-local-initialize.sh mysite https://localhost:4443 acro adminpassword sqlpassword
 
-${DIR}/volumes/full/spec/wiki-db-local-initialize.sh mysite https://192.168.168.250:4443 acro adminpassword sqlpassword
+${DIR}/volumes/full/spec/wiki-db-local-initialize.sh ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${ADMIN_PASSWORD} ${MYSQL_ROOT_PASSWORD}
 
 echo ""; echo "*** Installer install-dante.sh completed"
 
