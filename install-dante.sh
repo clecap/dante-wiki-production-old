@@ -14,14 +14,15 @@ echo ""; echo "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
-echo ""; echo "*** Building template starting volume"
+echo ""; echo "*** Building template directory"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
 tar --no-same-owner -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
-echo "DONE building template starting volume"
+echo "DONE building template directory"
 
-
+echo ""; echo "*** Building docker volume"
 LAP_VOLUME=lap-volume
 docker volume create ${LAP_VOLUME}
+echo "DONE building docker volume"
 
 #  -rm  automagically remove container when it exits
 docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir  alpine cp -R myfile.txt /var/www/html/wiki-dir
