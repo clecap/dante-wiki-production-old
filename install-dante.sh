@@ -47,7 +47,7 @@ echo "DONE "
 
 echo ""; echo "*** Starting containers..."
 #${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
-${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir ${LAP_VOLUME}
+${DIR}/images/lap/bin/both.sh --db my-test-db-volume --vol ${LAP_VOLUME}
 echo "DONE starting containers"
 
 
