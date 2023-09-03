@@ -68,7 +68,7 @@ MYSQL_CONTAINER=my-mysql
 
 
 echo ""; echo "*** Waiting for database to come up..."
-echo "   PLEASE WAIT AT LEAST 1 MINUTE UNTIL NO ERRORS ARE SHOWING UP ANY LONGER"
+echo "" ;echo "   PLEASE WAIT AT LEAST 1 MINUTE UNTIL NO ERRORS ARE SHOWING UP ANY LONGER"; echo ""
 # while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1" >/dev/null 2>&1; do
 while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1"; do
   sleep 1
@@ -82,3 +82,8 @@ echo ""; echo "*** Initializing Database"
 ${DIR}/volumes/full/spec/wiki-db-local-initialize.sh mysite https://192.168.168.250:4443 acro adminpassword sqlpassword
 
 echo ""; echo "*** Installer install-dante.sh completed"
+
+
+echo ""; echo "";
+echo "*** DanteWiki should now be available locally at ${DANTE_WIKI_URL}/wiki-dir/index.php"
+
