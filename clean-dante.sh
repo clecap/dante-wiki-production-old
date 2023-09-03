@@ -33,7 +33,7 @@ else
          cleanFiles;;
       (--volumes) 
         cleanVolumes;;
-      (--ontainers)
+      (--containers)
         cleanContainers;;
       (--images)
         cleanImages;; 
@@ -57,7 +57,12 @@ cleanFiles () {
 echo "DONE removing generated directories"
 }
 
-
+cleanVolumes () {
+  echo "*** Cleaning up docker volumes generated..."
+  docker volume rm my-test-db-volume
+  docker volume rm sample-volume
+  echo "DONE cleaning up docker volumes generated"
+}
 
 cleanContainers () {
   echo "*** Stopping and removing docker containers"
@@ -68,22 +73,30 @@ cleanContainers () {
   echo "DONE stopping and removing docker containers"
 }
 
-cleanNetwork () {
+cleanImages () {
+  echo "*** Cleaning up docker images..."
+  docker rmi -f $(docker images -aq)
+  echo "DONE cleaning up docker images"
+}
+
+
+cleanNetworks () {
   echo "*** Cleaning up docker networks generated..."
   docker network   rm dante-network
   echo "DONE cleaning up docker networks generated"
 }
 
-cleanVolumes () {
-  echo "*** Cleaning up docker volumes generated..."
-  docker volume rm my-test-db-volume
-  docker volume rm sample-volume
-  echo "DONE cleaning up docker volumes generated"
+
+
+
+
+cleanAll () {
+  cleanFiles
+  cleanVolumes
+  cleanContainers
+  cleanImages
+  cleanNetworks
 }
-
-
-
-
 
 
 echo "*** Displaying existing docker resources..."
