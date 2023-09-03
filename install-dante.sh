@@ -123,5 +123,7 @@ ${DIR}/initial-content.sh
 
 
 echo ""; echo "";
+echo "******** THE INSTALLATION IS COMPLETE"
+echo "";
 echo "*** DanteWiki should now be available locally at ${DANTE_WIKI_URL}/wiki-dir/index.php"
 
