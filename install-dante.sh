@@ -60,6 +60,26 @@ echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
 echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 
-# echo "*** Initializing Database"
+
+
+
+MYSQL_CONTAINER=my-mysql
+
+
+
+echo ""; echo "*** Waiting for database to come up..."
+while ! docker exec ${MYSQL_CONTAINER} --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1" >/dev/null 2>&1; do
+  sleep 1
+  echo "   Still waiting for database to come up..."
+done
+
+echo ""; echo "*** Initializing Database"
+
+# volumes/full/spec/wiki-db-local-initialize.sh mysite https://localhost:4443 acro adminpassword sqlpassword
+
+volumes/full/spec/wiki-db-local-initialize.sh mysite https://192.168.168.250:4443 acro adminpassword sqlpassword
+
+
+
 
 # echo "*** Loading initial content"

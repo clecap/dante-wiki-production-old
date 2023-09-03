@@ -21,8 +21,8 @@ studying performance to cut down on this which probably is massive overprovision
 
 The instructions here are meant for a Linux or a MacOS machine.
 
-If you use a Windows machine you are yourself responsible for this mistake ;-) and can adapt the files yourself.
-Note, however, that the install files are written in bash.
+If you use a Windows machine you are yourself responsible for this mistake ;-) and, currently, 
+should read https://programmerbear.com/why-microsoft-is-evil/ and adapt the bash installation files yourself.
 
 ## Description of Installation
 
@@ -132,8 +132,6 @@ From any other machine via
 
 
 
-
-
 # Running DanteWiki
 
 
@@ -149,3 +147,12 @@ DanteWiki is software in development. As it follows the perpetual-beta philosoph
 For small updates you can execute `update-dante.sh`. 
 
 It is good operational practice to make a backup of data before every update.
+
+
+# Debugging
+
+We can enter the containers for introspection by shell commands via
+
+`docker exec -it my-lap-container /bin/ash`
+`docker exec -it my-mysql /bin/ash`
+
