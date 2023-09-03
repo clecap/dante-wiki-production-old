@@ -63,6 +63,7 @@ echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 echo "DONE generating configuration file directory"
 
 
+
 MYSQL_CONTAINER=my-mysql
 
 
