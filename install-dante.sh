@@ -10,7 +10,7 @@ set -e
 
 rm ${TOP_DIR}/main.zip
 
-echo ""; "*** Making a backup of the configuration file CONF.sh"
+echo ""; echo "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
