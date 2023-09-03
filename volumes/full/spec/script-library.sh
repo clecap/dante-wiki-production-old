@@ -32,7 +32,7 @@ dropUser () {
 # DROP USER ‘’@’localhost’, ‘’@’${DB_CONTAINER}’, ´username´@´localhost´;
 
   docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
-DROP USER IF EXISTS ‘’@’localhost’, ´username´@´localhost´;
+DROP USER ‘’@’localhost’;
 MYSQLSTUFF
 
   EXIT_CODE=$?
