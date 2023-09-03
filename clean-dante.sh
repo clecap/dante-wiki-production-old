@@ -31,6 +31,7 @@ cleanVolumes () {
   echo "*** Cleaning up docker volumes generated..."
   docker volume rm my-test-db-volume
   docker volume rm sample-volume
+  docker volume rm lap-volume
   echo "DONE cleaning up docker volumes generated"
 }
 

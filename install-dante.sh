@@ -14,10 +14,20 @@ echo ""; echo "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
-echo ""; echo "*** Building volume"
+echo ""; echo "*** Building template starting volume"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
 tar --no-same-owner -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
-echo "DONE building volume"
+echo "DONE building template starting volume"
+
+
+LAP_VOLUME=lap-volume
+docker volume create ${LAP_VOLUME}
+
+#  -rm  automagically remove container when it exits
+docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir  alpine cp -R myfile.txt /var/www/html/wiki-dir
+docker run --rm -volume ${DIR}/volumes/full/content:/source -volume ${LAP_VOLUME}:/dest -w /source alpine cp -R * /dest
+
+
 
 echo ""; echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
@@ -30,7 +40,8 @@ echo ""; echo "*** Retagging docker images into local names for install mechanis
 echo "DONE "
 
 echo ""; echo "*** Starting containers..."
-${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
+#${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
+${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir ${LAP_VOLUME}
 echo "DONE starting containers"
 
 
