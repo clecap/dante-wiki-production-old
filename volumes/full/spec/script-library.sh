@@ -29,7 +29,7 @@ dropUser () {
   printf "\n\n*** dropUser: Dropping default anonymous user \n"
 
 
-# DROP USER ‘’@’localhost’, ‘’@’${DB_CONTAINER}’, ´username´@´localhost´;
+# DROP USER ''@'localhost', ‘’@'${DB_CONTAINER}', 'username'@'localhost';
 
   docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
 DROP USER ''@'localhost';
