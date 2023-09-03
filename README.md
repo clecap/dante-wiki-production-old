@@ -26,7 +26,7 @@ should read https://programmerbear.com/why-microsoft-is-evil/ and adapt the bash
 
 ## Description of Installation
 
-1. Navigate into a directory which shall contain the installation directory.
+1. Log in as a normal user and navigate to a directory which shall contain the installation directory.
 2. Download the zip archive at https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip into directory `dante`.
 3. Unzip file `main.zip`
 4. Navigate into the newly generated directory `dante-wiki-production-main`
