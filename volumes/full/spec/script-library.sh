@@ -106,7 +106,7 @@ runMWInstallScript () {
   local SITE_ACRONYM=$3
   local WK_PASS=$4
 
-  echo "*** Running runMWInstallScript on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS}"
+  echo ""; echo "*** Running runMWInstallScript on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS}"
 
   local WK_USER="Admin"
 
@@ -134,6 +134,7 @@ runMWInstallScript () {
   MEDIAWIKI_ADMIN_PASS=${WK_PASS}
   MEDIAWIKI_ENABLE_SSL=true
 
+echo ""
 echo ________________
 echo "*** MEDIAWIKI INSTALLATION PARAMETERS WILL BE: "
 echo ""
@@ -176,7 +177,7 @@ docker exec -w /${MOUNT}/${VOLUME_PATH} ${LAP_CONTAINER} php maintenance/install
     "$MEDIAWIKI_SITE_NAME" \
     "$MEDIAWIKI_ADMIN_USER"
 
-
+  echo ""
   echo "_______________________________________"
   echo ""
 

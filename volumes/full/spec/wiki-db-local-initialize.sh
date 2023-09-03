@@ -34,7 +34,7 @@ SITE_ACRONYM=$3
 WK_PASS=$4
 MY_SQL_ROOT_PASSWORD=$5
 
-echo "*** Running wiki-db-local-initalize.sh on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS} ${MY_SQL_ROOT_PASSWORD}"
+echo ""; echo "*** Running wiki-db-local-initalize.sh on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS} ${MY_SQL_ROOT_PASSWORD}"
 
 MOUNT="/var/www/html"
 VOLUME_PATH=wiki-dir
@@ -45,9 +45,11 @@ DB_USER=user${SITE_ACRONYM}
 DB_NAME=DB_${SITE_ACRONYM}
 DB_PASS=`openssl rand -base64 14`
 
-echo "******************************************** DB_CONTAINER IS: ${DB_CONTAINER} ****\n"
+echo ""; echo "*** DB_CONTAINER IS: ${DB_CONTAINER}"
 
-dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MY_SQl_ROOT_PASSWORD}
+dropUser ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD}
+
+dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD}
 
 addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER}
 
