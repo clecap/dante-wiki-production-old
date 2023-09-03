@@ -3,7 +3,7 @@
 # Cleaning up a dante installation
 
 ## NOTE: The original of this file currently is in dante-wiki-production
-
+ 
 # get directory where this script resides wherever it is called from
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
