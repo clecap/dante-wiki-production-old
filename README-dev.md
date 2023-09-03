@@ -8,6 +8,33 @@ We can enter the containers for introspection by shell commands via
 `docker exec -it my-mysql /bin/ash`
 
 
+# User IDs and File System Permissions
+
+We install DanteWiki under the directory of a normal end-user.
+
+Thus, the files and directories in /volume belong to this normal end-user.
+
+In the lap container, the Apache server must be able to read all of these files and must be able to write into some
+of the directories.
+
+In the lap container, the Apache server is running under user id apache and group id apache.
+
+Directories 777
+Files 6
+
+
+### IMportant directories for writing:
+
+* Parisfal/log
+
+
+
+
+
+
+
+
+
 # Network access
 
 Provided that these port numbers are free, you can access...
