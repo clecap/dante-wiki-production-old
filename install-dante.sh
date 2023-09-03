@@ -31,7 +31,11 @@ echo ""; echo "*** Building volume"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
 # stop upon a tar error (otherwise the error list gets too long)
 set -e
-tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content/ > ${DIR}/tar-extraction-log
+
+exit
+
+
+tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
 set +e
 echo "DONE building volume"
 
