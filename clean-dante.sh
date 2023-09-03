@@ -57,16 +57,18 @@ cleanNetworks () {
 
 cleanAll () {
   cleanFiles
-  cleanVolumes
+# CAVE: FIRST the containers and only then the volumes
   cleanContainers
+  cleanVolumes
   cleanImages
   cleanNetworks
 }
 
 cleanMost () {
   cleanFiles
-  cleanVolumes
+# CAVE: FIRST the containers and only then the volumes
   cleanContainers
+  cleanVolumes
   cleanNetworks
 }
 
