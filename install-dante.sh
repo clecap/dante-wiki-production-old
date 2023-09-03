@@ -9,30 +9,30 @@ TOP_DIR=${DIR}/..
 
 rm ${TOP_DIR}/main.zip
 
-echo "*** Making a backup of the configuration file CONF.sh"
+echo ""; "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
-echo "*** Pulling Docker Images from docker hub..."
+echo ""; echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
   docker pull clecap/my-mysql:latest
 echo "DONE pulling docker images"
 
-echo "*** Retagging docker images into local names for install mechanisms..."
+echo ""; echo "*** Retagging docker images into local names for install mechanisms..."
   docker tag clecap/lap:latest lap
   docker tag clecap/my-mysql:latest my-mysql
 echo "DONE "
 
-echo "*** Starting containers..."
+echo ""; echo "*** Starting containers..."
 ${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
 echo "DONE starting containers"
 
-echo "*** Building volume"
+echo ""; echo "*** Building volume"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
 tar -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content/ > ${DIR}/tar-extraction-log
 echo "DONE building volume"
 
-echo "*** Generating configuration file directory"
+echo ""; echo "*** Generating configuration file directory"
 mkdir -p ${DIR}/conf
 source ${DIR}/CONF.sh
 
@@ -58,6 +58,6 @@ echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
 echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 
-echo "*** Initializing Database"
+# echo "*** Initializing Database"
 
-echo "*** Loading initial content"
+# echo "*** Loading initial content"
