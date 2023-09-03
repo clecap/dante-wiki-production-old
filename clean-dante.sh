@@ -16,6 +16,7 @@ usage() {
   echo "Clean images:       --images        "
   echo "Clean networks:     --networks     "
   echo "Clean all:          --all          "
+  echo "Clean most:         --most      (all except images)  "
  exit 1
 }
 
@@ -62,6 +63,12 @@ cleanAll () {
   cleanNetworks
 }
 
+cleanMost () {
+  cleanFiles
+  cleanVolumes
+  cleanContainers
+  cleanNetworks
+}
 
 display () {
   echo "*** Displaying existing docker resources..."
@@ -93,6 +100,8 @@ else
         cleanNetworks;;
       (--all)
         cleanAll;;
+      (--most)
+        cleanMost;;
     esac
     shift 1
   done
