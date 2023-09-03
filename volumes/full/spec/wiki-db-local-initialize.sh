@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+## The original of this file is in the development repository
+
 #
 # Driver function which initializes the MediaWiki database and generates a local settings file
 #
@@ -8,6 +11,22 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source ${DIR}/script-library.sh
+
+
+usage() {
+  echo ""
+  echo "Usage:   $0  MW_SITE_NAME  MW_SITE_SERVER  SITE_ACRONYM  WK_PASS MY_SQL_ROOT_PASSWORD "
+  echo "Example: $0  mysite  https://localhost:4443  acro  admin-password  sql-password "
+  exit 1
+}
+
+##
+## Read command line
+# region
+if [ "$#" -eq 0  ]; then
+  usage
+fi
+
 
 MW_SITE_NAME=$1
 MW_SITE_SERVER=$2

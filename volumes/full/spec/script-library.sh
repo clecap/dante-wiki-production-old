@@ -22,7 +22,19 @@ MYSQLSTUFF
 }
 #endregion
 
+dropUser () {
+  local DB_CONTAINER=$1
+  local MYSQL_ROOT_PASSWORD=$2
 
+  printf "\n\n*** dropUser: Dropping default anonymous user \n"
+
+  docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
+DROP USER ‘’@’localhost’, ‘’@’${DB_CONTAINER}’, ´username´@´localhost´;
+MYSQLSTUFF
+
+  EXIT_CODE=$?
+  printf "DONE: Exit code of dropUser call: ${EXIT_CODE} \n\n"
+}
 
 
 # region  addDatabase:  add a username and a database to the database engine
@@ -38,6 +50,12 @@ addDatabase () {
 
 # TODO: Adapt the permissions granted to the specific environment and run-time conditions.
 # TODO: CURRENTLY We ARE NOT USING A MYSQL_ROOT_PASSWORD (the empty passowrd works !!!)
+
+
+# 172.16.0.0/255.240.0.0 is the IP range which is used for the docker bridge and which is most likely the IP address
+#   which mysql is likely to see in a login attempt
+
+
 docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
 CREATE DATABASE IF NOT EXISTS ${MY_DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
 --CREATE USER IF NOT EXISTS ${MY_DB_USER}@'%' IDENTIFIED BY '${MY_DB_PASS}';
