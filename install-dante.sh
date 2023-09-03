@@ -6,6 +6,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP_DIR=${DIR}/..
 
+set -e
 
 rm ${TOP_DIR}/main.zip
 
@@ -15,7 +16,7 @@ echo "DONE making a backup of the configuration file CONF.sh";
 
 echo ""; echo "*** Building volume"
 mkdir -p ${DIR}/volumes/full/content/wiki-dir
-tar -xzvf --no-same-owner ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
+tar --no-same-owner -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
 echo "DONE building volume"
 
 echo ""; echo "*** Pulling Docker Images from docker hub..."
