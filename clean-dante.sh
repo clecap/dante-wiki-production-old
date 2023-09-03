@@ -19,37 +19,6 @@ usage() {
  exit 1
 }
 
-
-##
-## Parse command line
-##
-# region
-if [ "$#" -eq 0 ]; then
-  usage
-else 
-  while (($#)); do
-    case $1 in 
-      (--files) 
-         cleanFiles;;
-      (--volumes) 
-        cleanVolumes;;
-      (--containers)
-        cleanContainers;;
-      (--images)
-        cleanImages;; 
-      (--networks)
-        cleanNetworks;;
-      (--all)
-        cleanAll;;
-      (*) 
-         usage
-         exit 1;;
-    esac
-    shift 1
-  done
-fi
-
-
 cleanFiles () {
   echo "*** Removing generated directories"
   rm -Rf ${DIR}/volumes
@@ -79,16 +48,11 @@ cleanImages () {
   echo "DONE cleaning up docker images"
 }
 
-
 cleanNetworks () {
   echo "*** Cleaning up docker networks generated..."
   docker network   rm dante-network
   echo "DONE cleaning up docker networks generated"
 }
-
-
-
-
 
 cleanAll () {
   cleanFiles
@@ -99,10 +63,38 @@ cleanAll () {
 }
 
 
-echo "*** Displaying existing docker resources..."
+display () {
+  echo "*** Displaying existing docker resources..."
   docker container ls
   docker network ls
   docker image ls
-echo "DONE displaying docker resources\n"
+  echo "DONE displaying docker resources\n"
+}
+
+
+##
+## Parse command line
+##
+# region
+if [ "$#" -eq 0 ]; then
+  usage
+else 
+  while (($#)); do
+    case $1 in 
+      (--files) 
+         cleanFiles;;
+      (--volumes) 
+        cleanVolumes;;
+      (--containers)
+        cleanContainers;;
+      (--images)
+        cleanImages;; 
+      (--networks)
+        cleanNetworks;;
+      (--all)
+        cleanAll;;
+    esac
+  done
+fi
 
 
