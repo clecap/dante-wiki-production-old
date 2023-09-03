@@ -19,7 +19,7 @@ docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.
 docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
 echo "DONE uploading initial contents to wiki"
 
-echo ""; echo "*** Runnding some maintenance commands"
+echo ""; echo "*** Running some maintenance commands"
 docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/rebuildrecentchanges.php
 docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/initSiteStats.php --update 
 echo "DONE running some maintenance commands"
