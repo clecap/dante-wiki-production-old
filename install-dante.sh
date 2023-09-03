@@ -30,7 +30,7 @@ echo ""
 
 docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
 
-docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R apache.apache /dest
+docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R 100.100 /dest
 
 
 # docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir alpine cp CONF.sh /dest
