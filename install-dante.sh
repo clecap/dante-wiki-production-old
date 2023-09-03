@@ -80,7 +80,4 @@ echo ""; echo "*** Initializing Database"
 
 volumes/full/spec/wiki-db-local-initialize.sh mysite https://192.168.168.250:4443 acro adminpassword sqlpassword
 
-
-
-
-# echo "*** Loading initial content"
+echo ""; echo "*** Installer install-dante.sh completed"

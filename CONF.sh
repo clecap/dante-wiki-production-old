@@ -7,8 +7,6 @@ MYSQL_ROOT_PASSWORD=password
 MYSQL_DUMP_USER=username
 MYSQL_DUMP_PASSWORD=otherpassword
 
-DEFAULT_DB_VOLUME_NAME=my-mysql-data-volume
-
 MW_SITE_SERVER=https://www.clemenscap.de
 
 MW_SITE_NAME="MatheWiki"
@@ -35,4 +33,12 @@ SMTP_USERNAME='usernamesamplexx'
 
 # the password for logging in into the SMTP account
 SMTP_PASSWORD='password'
+
+
+
+##
+## Below values should not be changed unless you know what you are doing
+##
+
+DEFAULT_DB_VOLUME_NAME=my-mysql-data-volume
 
