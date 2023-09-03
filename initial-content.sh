@@ -9,13 +9,12 @@ TOP_DIR=${DIR}/..
 
 
 USER=apache
-
+# we need to run the maintenance scripts under the user under which the dante wiki is running normally in the server
+# to get the correct permissions
 
 LAP_CONTAINER=my-lap-container
-DUMPFILE=/var/www/html/wiki-dir/initial-contents.xml
 
-echo ""; echo "*** Initial contents copied to volume"
-cp ${DIR}/initial-contents.xml ${DIR}/volumes/full/content/wiki-dir/initial-contents.xml
+DUMPFILE=/var/www/html/wiki-dir/initial-contents.xml
 
 echo ""; echo "*** Initial contents uploaded to wiki"
 # CAVE: this must run as user apache
