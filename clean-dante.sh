@@ -74,10 +74,15 @@ cleanMost () {
 
 display () {
   echo "";echo ""; echo "*** Displaying existing docker resources..."
+  echo ""; echo "*** CONTAINERS:"
   docker container ls
+  echo ""; echo "*** NETWORKS:"
   docker network ls
+  echo ""; echo "*** VOLUMES:"
+  docker volume ls
+  echo ""; echo "*** IMAGES:"
   docker image ls
-  echo "DONE displaying docker resources"
+  echo ""; echo "DONE displaying docker resources"
 }
 
 
