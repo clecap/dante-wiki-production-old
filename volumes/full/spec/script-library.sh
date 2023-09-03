@@ -14,7 +14,7 @@ dropDatabase () {
   printf "\n\n*** dropDatabase: Dropping database ${MY_DB_NAME} \n"
 
   docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
-DROP DATABASE ${MY_DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
+DROP DATABASE IF EXISTS ${MY_DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
 MYSQLSTUFF
 
   EXIT_CODE=$?
@@ -33,7 +33,7 @@ dropUser () {
 
   docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
 DROP USER IF EXISTS ''@'localhost';
-DROP USER IF EXISTS ''@'{DB_CONTAINER}';
+DROP USER ""@"{DB_CONTAINER}";
 SELECT user, host, password from mysql.user;
 MYSQLSTUFF
 
