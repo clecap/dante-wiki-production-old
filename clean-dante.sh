@@ -94,6 +94,7 @@ else
       (--all)
         cleanAll;;
     esac
+    shift 1
   done
 fi
 
