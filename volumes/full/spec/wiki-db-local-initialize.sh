@@ -15,7 +15,7 @@ source ${DIR}/script-library.sh
 
 usage() {
   echo ""
-  echo "Usage:   $0  MW_SITE_NAME  MW_SITE_SERVER  SITE_ACRONYM  WK_PASS MY_SQL_ROOT_PASSWORD "
+  echo "Usage:   $0  MW_SITE_NAME  MW_SITE_SERVER  SITE_ACRONYM  WK_PASS MYSQL_ROOT_PASSWORD "
   echo "Example: $0  mysite  https://localhost:4443  acro  admin-password  sql-password "
   exit 1
 }
@@ -32,9 +32,9 @@ MW_SITE_NAME=$1
 MW_SITE_SERVER=$2
 SITE_ACRONYM=$3
 WK_PASS=$4
-MY_SQL_ROOT_PASSWORD=$5
+MYSQL_ROOT_PASSWORD=$5
 
-echo ""; echo "*** Running wiki-db-local-initalize.sh on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS} ${MY_SQL_ROOT_PASSWORD}"
+echo ""; echo "*** Running wiki-db-local-initalize.sh on ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${WK_PASS} ${MYSQL_ROOT_PASSWORD}"
 
 MOUNT="/var/www/html"
 VOLUME_PATH=wiki-dir
@@ -50,14 +50,14 @@ echo ""; echo "*** DB_CONTAINER IS: ${DB_CONTAINER}"
 # abort on any error
 set -e
 
-dropUser ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD} ${DB_USER}
+dropUser ${DB_CONTAINER} ${MYSQL_ROOT_PASSWORD} ${DB_USER}
 
-dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD}
+dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MYSQL_ROOT_PASSWORD}
 
 
-echo "*** Calling: addDatabase DB_NAME=${DB_NAME} DB_USER=${DB_USER} DB_PASS=${DB_PASS} MY_SQL_ROOT_PASSWORD=${MY_SQL_ROOT_PASSWORD} DB_CONTAINER=${DB_CONTAINER} "
+echo "*** Calling: addDatabase DB_NAME=${DB_NAME} DB_USER=${DB_USER} DB_PASS=${DB_PASS} MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} DB_CONTAINER=${DB_CONTAINER} "
 
-addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER}
+addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MYSQL_ROOT_PASSWORD} ${DB_CONTAINER}
 
 removeLocalSettings ${LAP_CONTAINER} ${MOUNT} ${VOLUME_PATH}
 
