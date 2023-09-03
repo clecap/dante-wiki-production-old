@@ -9,7 +9,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
 usage() {
-  echo "Usage: $0   and add one or more options on what to clean. This is version 3"
+  echo "Usage: $0   and add one or more options on what to clean."
   echo "Clean files:        --files         "
   echo "Clean volumes:      --volumes       "
   echo "Clean containers:   --containers       "
@@ -71,7 +71,7 @@ cleanMost () {
 }
 
 display () {
-  echo "*** Displaying existing docker resources..."
+  echo "\n\n*** Displaying existing docker resources..."
   docker container ls
   docker network ls
   docker image ls
@@ -86,6 +86,7 @@ display () {
 if [ "$#" -eq 0 ]; then
   usage
 else 
+  display
   while (($#)); do
     case $1 in 
       (--files) 
@@ -105,6 +106,7 @@ else
     esac
     shift 1
   done
+  display
 fi
 
 
