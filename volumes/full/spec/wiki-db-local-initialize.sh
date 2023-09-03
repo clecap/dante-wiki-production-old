@@ -54,6 +54,9 @@ dropUser ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD} ${DB_USER}
 
 dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD}
 
+
+echo "*** Calling: addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER} "
+
 addDatabase ${DB_NAME} ${DB_USER} ${DB_PASS} ${MY_SQL_ROOT_PASSWORD} ${DB_CONTAINER}
 
 removeLocalSettings ${LAP_CONTAINER} ${MOUNT} ${VOLUME_PATH}
