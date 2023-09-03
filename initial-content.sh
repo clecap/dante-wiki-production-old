@@ -7,6 +7,10 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP_DIR=${DIR}/..
 
 
+
+USER=`whoami`
+
+
 LAP_CONTAINER=my-lap-container
 DUMPFILE=/var/www/html/wiki-dir/initial-contents.xml
 
@@ -15,12 +19,12 @@ cp ${DIR}/initial-contents.xml ${DIR}/volumes/full/content/wiki-dir/initial-cont
 
 echo ""; echo "*** Initial contents uploaded to wiki"
 # CAVE: this must run as user apache
-docker exec  --user apache ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug ${DUMPFILE}
-docker exec  --user apache ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug ${DUMPFILE}
-docker exec  --user apache ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
+docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug ${DUMPFILE}
+docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug ${DUMPFILE}
+docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
 echo "DONE uploading initial contents to wiki"
 
 echo ""; echo "*** Running some maintenance commands"
-docker exec  --user apache ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/rebuildrecentchanges.php
-docker exec  --user apache  ${LAP_CONTAINER} php /var/www/html/wiki-dir/maintenance/initSiteStats.php --update 
+docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/rebuildrecentchanges.php
+docker exec  --user ${USER} ${LAP_CONTAINER} php /var/www/html/wiki-dir/maintenance/initSiteStats.php --update 
 echo "DONE running some maintenance commands"
