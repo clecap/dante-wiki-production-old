@@ -14,9 +14,9 @@ echo ""; echo "*** Initial contents copied to volume"
 cp ${DIR}/initial-contents.xml ${DIR}/volumes/full/content/wiki-dir/initial-contents.xml
 
 echo ""; echo "*** Initial contents uploaded to wiki"
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug < ${DUMPFILE}
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug < ${DUMPFILE}
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug < ${DUMPFILE}
+docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug ${DUMPFILE}
+docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug ${DUMPFILE}
+docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
 echo "DONE uploading initial contents to wiki"
 
 echo ""; echo "*** Runnding some maintenance commands"
