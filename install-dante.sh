@@ -60,7 +60,7 @@ echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
 echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 
-
+echo "DONE generating configuration file directory"
 
 
 MYSQL_CONTAINER=my-mysql
@@ -68,7 +68,8 @@ MYSQL_CONTAINER=my-mysql
 
 
 echo ""; echo "*** Waiting for database to come up..."
-while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1" >/dev/null 2>&1; do
+# while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1" >/dev/null 2>&1; do
+while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1"; do
   sleep 1
   echo "   Still waiting for database to come up..."
 done
