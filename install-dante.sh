@@ -19,40 +19,7 @@ mkdir -p ${DIR}/volumes/full/content/wiki-dir
 tar --no-same-owner -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
 echo "DONE building template directory"
 
-echo ""; echo "*** Building docker volume"
-LAP_VOLUME=lap-volume
-docker volume create ${LAP_VOLUME}
-echo "DONE building docker volume"
 
-#  -rm  automagically remove container when it exits
-echo "we have a PWD of: ${PWD} and a DIR of ${DIR}"
-echo ""
-
-docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
-
-docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R 100.100 /dest
-
-
-# docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir alpine cp CONF.sh /dest
-
-# docker run --rm -volume ${DIR}/volumes/full/content:/source -volume ${LAP_VOLUME}:/dest -w /source alpine cp -R * /dest
-
-
-
-echo ""; echo "*** Pulling Docker Images from docker hub..."
-  docker pull clecap/lap:latest
-  docker pull clecap/my-mysql:latest
-echo "DONE pulling docker images"
-
-echo ""; echo "*** Retagging docker images into local names for install mechanisms..."
-  docker tag clecap/lap:latest lap
-  docker tag clecap/my-mysql:latest my-mysql
-echo "DONE "
-
-echo ""; echo "*** Starting containers..."
-#${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
-${DIR}/images/lap/bin/both.sh --db my-test-db-volume --vol ${LAP_VOLUME}
-echo "DONE starting containers"
 
 
 echo ""; echo "*** Generating configuration file directory"
@@ -84,6 +51,48 @@ echo "MW_SITE_SERVER=${MW_SITE-SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
 
 echo "DONE generating configuration file directory"
+
+
+
+
+
+
+echo ""; echo "*** Building docker volume"
+LAP_VOLUME=lap-volume
+docker volume create ${LAP_VOLUME}
+echo "DONE building docker volume"
+
+#  -rm  automagically remove container when it exits
+echo "we have a PWD of: ${PWD} and a DIR of ${DIR}"
+echo ""
+
+docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
+
+# 100.101  is  apache.www-data  
+docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R 100.101 /dest
+
+
+# docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir alpine cp CONF.sh /dest
+
+# docker run --rm -volume ${DIR}/volumes/full/content:/source -volume ${LAP_VOLUME}:/dest -w /source alpine cp -R * /dest
+
+
+
+echo ""; echo "*** Pulling Docker Images from docker hub..."
+  docker pull clecap/lap:latest
+  docker pull clecap/my-mysql:latest
+echo "DONE pulling docker images"
+
+echo ""; echo "*** Retagging docker images into local names for install mechanisms..."
+  docker tag clecap/lap:latest lap
+  docker tag clecap/my-mysql:latest my-mysql
+echo "DONE "
+
+echo ""; echo "*** Starting containers..."
+#${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
+${DIR}/images/lap/bin/both.sh --db my-test-db-volume --vol ${LAP_VOLUME}
+echo "DONE starting containers"
+
 
 
 
