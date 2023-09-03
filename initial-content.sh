@@ -11,7 +11,7 @@ LAP_CONTAINER=my-lap-container
 DUMPFILE=/var/www/html/wiki-dir/initial-contents.xml
 
 echo ""; echo "*** Initial contents copied to volume"
-cp ${DIR}/initial-contents.xml ${DIR}/volumes/wiki-dir/initial-contents.xml
+cp ${DIR}/initial-contents.xml ${DIR}/volumes/full/content/wiki-dir/initial-contents.xml
 
 echo ""; echo "*** Initial contents uploaded to wiki"
 docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug < ${DUMPFILE}

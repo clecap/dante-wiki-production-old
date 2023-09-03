@@ -13,6 +13,11 @@ echo ""; "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
 
+echo ""; echo "*** Building volume"
+mkdir -p ${DIR}/volumes/full/content/wiki-dir
+tar -xzvf --no-same-owner ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
+echo "DONE building volume"
+
 echo ""; echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
   docker pull clecap/my-mysql:latest
@@ -27,10 +32,6 @@ echo ""; echo "*** Starting containers..."
 ${DIR}/images/lap/bin/both.sh --db my-test-db-volume --dir full
 echo "DONE starting containers"
 
-echo ""; echo "*** Building volume"
-mkdir -p ${DIR}/volumes/full/content/wiki-dir
-tar -xzvf --no-same-owner ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
-echo "DONE building volume"
 
 echo ""; echo "*** Generating configuration file directory"
 mkdir -p ${DIR}/conf
