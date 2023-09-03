@@ -25,15 +25,17 @@ MYSQLSTUFF
 dropUser () {
   local DB_CONTAINER=$1
   local MYSQL_ROOT_PASSWORD=$2
+  local MY_DB_USER=$3
 
   printf "\n\n*** dropUser: Dropping default anonymous user \n"
 
 
-# DROP USER ''@'localhost', ‘’@'${DB_CONTAINER}', 'username'@'localhost';
-
+  # CAVE: we also must drop MY_DB_USER as we might have created this user earlier and then with a different password
   docker exec -i ${DB_CONTAINER} mysql -u root --password=${MYSQL_ROOT_PASSWORD} <<MYSQLSTUFF
 DROP USER IF EXISTS ''@'localhost';
 DROP USER IF EXISTS ""@"${DB_CONTAINER}";
+DROP USER IF EXISTS "${MY_DB_USER}"@"172.16.0.0/255.240.0.0";
+DROP USER IF EXISTS "${MY_DB_USER}"@"192.168.0.0/255.255.0.0";
 SELECT user, host, password from mysql.user;
 MYSQLSTUFF
 

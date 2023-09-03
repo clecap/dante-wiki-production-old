@@ -50,7 +50,7 @@ echo ""; echo "*** DB_CONTAINER IS: ${DB_CONTAINER}"
 # abort on any error
 set -e
 
-dropUser ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD}
+dropUser ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD} ${DB_USER}
 
 dropDatabase ${DB_NAME} ${DB_CONTAINER} ${MY_SQL_ROOT_PASSWORD}
 

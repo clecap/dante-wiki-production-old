@@ -49,6 +49,8 @@ echo  "  'password' => '${SMTP_PASSWORD}',                 // password of the em
 echo  "  'auth'     => true                                // shall authentisation be used    " >> ${MWP}
 echo "]; ?>  " >> ${MWP}
 
+cp ${MWP} ${DIR}/volumes/full/content/wiki-dir
+
 CUS=${DIR}/conf/customize-PRIVATE.sh
 rm -f ${CUS}
 echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"        > ${CUS}
