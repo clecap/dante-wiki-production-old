@@ -9,7 +9,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
 usage() {
-  echo "Usage: $0   and add one or more options on what to clean"
+  echo "Usage: $0   and add one or more options on what to clean. This is version 3"
   echo "Clean files:        --files         "
   echo "Clean volumes:      --volumes       "
   echo "Clean containers:   --containers       "
