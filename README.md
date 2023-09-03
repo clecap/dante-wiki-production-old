@@ -31,7 +31,7 @@ should read https://programmerbear.com/why-microsoft-is-evil/ and adapt the bash
 3. Unzip file `main.zip`
 4. Navigate into the newly generated directory `dante-wiki-production-main`
 4. Edit the configuration file `CONF.sh`. The data required in the configuration file is described by comments directly in this file. 
-5. Run DanteWIki installation script `dante-sh` (this may take several minutes).
+5. Run DanteWIki installation script `install-dante.sh` (this may take several minutes).
 
 ## Commands for Installation
 
