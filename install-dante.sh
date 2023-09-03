@@ -29,7 +29,7 @@ echo "we have a PWD of: ${PWD} and a DIR of ${DIR}"
 echo ""
 
 
-docker run --rm  --user 100  --volume ${LAP_VOLUME}:/dest -w /source alpine chown apache.apache /dest
+docker run --rm  --volume ${LAP_VOLUME}:/dest -w /source alpine chown apache.apache /dest
 
 
 exit
