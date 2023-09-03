@@ -14,12 +14,12 @@ echo ""; echo "*** Initial contents copied to volume"
 cp ${DIR}/initial-contents.xml ${DIR}/volumes/full/content/wiki-dir/initial-contents.xml
 
 echo ""; echo "*** Initial contents uploaded to wiki"
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug ${DUMPFILE}
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug ${DUMPFILE}
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
+docker exec ${LAP_CONTAINER}  --user apache  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug ${DUMPFILE}
+docker exec ${LAP_CONTAINER}  --user apache  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug ${DUMPFILE}
+docker exec ${LAP_CONTAINER}  --user apache  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
 echo "DONE uploading initial contents to wiki"
 
 echo ""; echo "*** Running some maintenance commands"
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/rebuildrecentchanges.php
-docker exec ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/initSiteStats.php --update 
+docker exec ${LAP_CONTAINER}  --user apache  php /var/www/html/wiki-dir/maintenance/rebuildrecentchanges.php
+docker exec ${LAP_CONTAINER}  --user apache  php /var/www/html/wiki-dir/maintenance/initSiteStats.php --update 
 echo "DONE running some maintenance commands"
