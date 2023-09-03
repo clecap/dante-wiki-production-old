@@ -85,7 +85,7 @@ ${DIR}/volumes/full/spec/wiki-db-local-initialize.sh mysite https://192.168.168.
 echo ""; echo "*** Installer install-dante.sh completed"
 
 
-
+${DIR}/initial-content.sh
 
 
 
