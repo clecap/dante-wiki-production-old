@@ -85,6 +85,10 @@ ${DIR}/volumes/full/spec/wiki-db-local-initialize.sh mysite https://192.168.168.
 echo ""; echo "*** Installer install-dante.sh completed"
 
 
+
+
+
+
 echo ""; echo "";
 echo "*** DanteWiki should now be available locally at ${DANTE_WIKI_URL}/wiki-dir/index.php"
 
