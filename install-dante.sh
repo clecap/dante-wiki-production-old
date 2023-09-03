@@ -68,7 +68,7 @@ MYSQL_CONTAINER=my-mysql
 
 
 echo ""; echo "*** Waiting for database to come up..."
-while ! docker exec ${MYSQL_CONTAINER} --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1" >/dev/null 2>&1; do
+while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT_PASSWORD} -e "SELECT 1" >/dev/null 2>&1; do
   sleep 1
   echo "   Still waiting for database to come up..."
 done
