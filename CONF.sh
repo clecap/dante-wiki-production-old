@@ -4,7 +4,7 @@
 ADMIN_PASSWORD=adminpassword
 
 SITE_ACRONYM=acro
-
+ 
 # The root password to be installed for the MYSQL database
 MYSQL_ROOT_PASSWORD=sqlrootpassword
 
