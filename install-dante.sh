@@ -76,8 +76,7 @@ echo ""
 
 docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
 
-
-docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R ${OWNERSHIP} /dest
+docker exec -it my-lap-container chown -R ${OWNERSHIP} /var/www/html/wiki-dir
 
 echo ""; echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
@@ -118,7 +117,7 @@ echo ""; echo "******* initialize-dante.sh: MW_SITE_NAME=${MW_SITE_NAME}  MW_SIT
 ${DIR}/volumes/full/spec/wiki-db-local-initialize.sh ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${ADMIN_PASSWORD} ${MYSQL_ROOT_PASSWORD}
 
 # Fix permissions also for the files newly generated right now
-docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R ${OWNERSHIP} /dest
+docker exec -it my-lap-container chown -R ${OWNERSHIP} /var/www/html/wiki-dir
 
 echo ""; echo "*** Installer install-dante.sh completed"
 
