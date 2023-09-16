@@ -2,6 +2,11 @@
 
 ## The original of this file is in dante-wiki-production
 
+# 100.101 on alpine installations is apache.www-data
+# This defines the target ownership for all files
+OWNERSHIP="100.101"
+
+
 # get directory where this script resides wherever it is called from
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP_DIR=${DIR}/..
@@ -10,8 +15,7 @@ set -e
 
 rm -f ${TOP_DIR}/main.zip
 
-chmod -f 700 CONF.sh
-chmod -f 700 CONF-backup.sh
+
 
 echo ""; echo "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
@@ -22,17 +26,12 @@ mkdir -p ${DIR}/volumes/full/content/wiki-dir
 tar --no-same-owner -xzvf ${DIR}/dante-deploy.tar.gz  -C ${DIR}/volumes/full/content > ${DIR}/tar-extraction-log
 echo "DONE building template directory"
 
-
-
-
 echo ""; echo "*** Generating configuration file directory"
 mkdir -p ${DIR}/conf
 source ${DIR}/CONF.sh
 
-
-
-
-
+chmod -f 700 CONF.sh
+chmod -f 700 CONF-backup.sh
 
 MWP=${DIR}/conf/mediawiki-PRIVATE.php
 rm -f ${MWP}
@@ -77,15 +76,8 @@ echo ""
 
 docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
 
-# 100.101  is  apache.www-data  
-docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R 100.101 /dest
 
-
-# docker run --rm -volume $PWD:/ -volume ${LAP_VOLUME}:/var/www/html/wiki-dir alpine cp CONF.sh /dest
-
-# docker run --rm -volume ${DIR}/volumes/full/content:/source -volume ${LAP_VOLUME}:/dest -w /source alpine cp -R * /dest
-
-
+docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R ${OWNERSHIP} /dest
 
 echo ""; echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
@@ -124,6 +116,9 @@ echo ""; echo "*** Initializing Database"
 echo ""; echo "******* initialize-dante.sh: MW_SITE_NAME=${MW_SITE_NAME}  MW_SITE_SERVER=${MW_SITE_SERVER}  SITE_ACRONYM=${SITE_ACRONYM}  ADMIN_PASSWORD=${ADMIN_PASSWORD}  MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
 
 ${DIR}/volumes/full/spec/wiki-db-local-initialize.sh ${MW_SITE_NAME} ${MW_SITE_SERVER} ${SITE_ACRONYM} ${ADMIN_PASSWORD} ${MYSQL_ROOT_PASSWORD}
+
+# Fix permissions also for the files newly generated right now
+docker run --rm --volume ${LAP_VOLUME}:/dest -w /source alpine chown -R ${OWNERSHIP} /dest
 
 echo ""; echo "*** Installer install-dante.sh completed"
 
