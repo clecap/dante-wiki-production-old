@@ -10,6 +10,10 @@ cd ${TOP_DIR}
 chmod -f 700 CONF.sh
 chmod -f 700 CONF-backup.sh
 
+echo ""; echo "*** Preserving old configuration..."
+cp -f ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
+echo "DONE copying in preserved old configuration"
+
 echo ""; echo "*** Getting fresh source..."
 rm -f ${TOP_DIR}/main.zip
 wget https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip
