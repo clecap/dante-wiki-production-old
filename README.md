@@ -19,7 +19,7 @@ studying performance to cut down on this.
 
 ## Installation
 
-The instructions here are meant for a Linux or a MacOS machine.
+The instructions here are meant for a Linux or a MacOS machine with a running docker installation.
 
 If you use a Windows machine you are yourself responsible for this mistake ;-)  
 and should read https://programmerbear.com/why-microsoft-is-evil/ 
