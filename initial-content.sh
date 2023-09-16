@@ -21,10 +21,17 @@ echo ""; echo "*** IGNORE THE 'Done!' messages, they do not apply"
 echo ""; echo "*** WAIT until we tell you that the installation is complete" 
 
 # CAVE: this must run as user apache
+echo ""; echo "* Doing namespaces 8"
 docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '8' --debug ${DUMPFILE}
+echo "DONE namespaces 8"
+
+echo ""; echo "* Doing namespaces 10"
 docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --namespaces '10' --debug ${DUMPFILE}
+echo "DONE namespaces 10"
+
+echo ""; echo "* Doing the rest" 
 docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/importDump.php --uploads --debug ${DUMPFILE}
-echo "DONE uploading initial contents to wiki"
+echo "DONE the rest"
 
 echo ""; echo "*** Running some maintenance commands"
 docker exec  --user ${USER} ${LAP_CONTAINER}  php /var/www/html/wiki-dir/maintenance/rebuildrecentchanges.php
