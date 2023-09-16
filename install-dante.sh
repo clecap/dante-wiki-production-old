@@ -34,10 +34,12 @@ echo ""; echo "*** Reading in configuration"
 source ${DIR}/CONF.sh
 echo "DONE reading configuration"
 
+set +e
 echo ""; echo "*** Fixing permission of config files" 
 chmod -f 700 CONF.sh
 chmod -f 700 CONF-backup.sh
 echo "DONE fixing permissions of config files"
+set -e
 
 echo ""; echo "*** Generating mediawiki-PRIVATE.php"
 MWP=${DIR}/conf/mediawiki-PRIVATE.php
