@@ -71,12 +71,10 @@ docker volume create ${LAP_VOLUME}
 echo "DONE building docker volume"
 
 #  -rm  automagically remove container when it exits
-echo "we have a PWD of: ${PWD} and a DIR of ${DIR}"
+echo "*** we have a PWD of: ${PWD} and a DIR of ${DIR}"
 echo ""
 
 docker run --rm --volume ${DIR}/volumes/full/content:/source --volume ${LAP_VOLUME}:/dest -w /source alpine cp -R wiki-dir /dest
-
-docker exec -it my-lap-container chown -R ${OWNERSHIP} /var/www/html/wiki-dir
 
 echo ""; echo "*** Pulling Docker Images from docker hub..."
   docker pull clecap/lap:latest
@@ -94,11 +92,7 @@ ${DIR}/images/lap/bin/both.sh --db my-test-db-volume --vol ${LAP_VOLUME}
 echo "DONE starting containers"
 
 
-
-
 MYSQL_CONTAINER=my-mysql
-
-
 
 echo ""; echo "*** Waiting for database to come up..."
 echo "" ;echo "   PLEASE WAIT AT LEAST 1 MINUTE UNTIL NO ERRORS ARE SHOWING UP ANY LONGER"; echo ""
@@ -107,6 +101,10 @@ while ! docker exec ${MYSQL_CONTAINER} mysql --user=root --password=${MYSQL_ROOT
   sleep 1
   echo "   Still waiting for database to come up..."
 done
+
+
+docker exec -it my-lap-container chown -R ${OWNERSHIP} /var/www/html/wiki-dir
+
 
 echo ""; echo "*** Initializing Database"
 
