@@ -10,6 +10,9 @@ set -e
 
 rm -f ${TOP_DIR}/main.zip
 
+chmod -f 700 CONF.sh
+chmod -f 700 CONF-backup.sh
+
 echo ""; echo "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
 echo "DONE making a backup of the configuration file CONF.sh";
