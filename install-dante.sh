@@ -28,11 +28,18 @@ echo "DONE building template directory"
 
 echo ""; echo "*** Generating configuration file directory"
 mkdir -p ${DIR}/conf
-source ${DIR}/CONF.sh
+echo "DONE generating configuration file directory"
 
+echo ""; echo "*** Reading in configuration"
+source ${DIR}/CONF.sh
+echo "DONE reading configuration"
+
+echo ""; echo "*** Fixing permission of config files" 
 chmod -f 700 CONF.sh
 chmod -f 700 CONF-backup.sh
+echo "DONE fixing permissions of config files"
 
+echo ""; echo "*** Generating mediawiki-PRIVATE.php"
 MWP=${DIR}/conf/mediawiki-PRIVATE.php
 rm -f ${MWP}
 echo  "<?php "   > ${MWP}
@@ -47,7 +54,9 @@ echo  "  'auth'     => true                                // shall authentisati
 echo "]; ?>  " >> ${MWP}
 
 cp ${MWP} ${DIR}/volumes/full/content/wiki-dir
+echo "DONE generating mediawiki-PRIVATE.php"
 
+echo "*** Generating customize-PRIVATE.php"
 CUS=${DIR}/conf/customize-PRIVATE.sh
 rm -f ${CUS}
 echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"        > ${CUS}
@@ -56,8 +65,7 @@ echo "MYSQL_DUMP_PASSWORD=${MYSQL_DUMP_PASSWORD}"        >> ${CUS}
 echo "DEFAULT_DB_VOLUME_NAME=${DEFAULT_DB_VOLUME_NAME}"  >> ${CUS}
 echo "MW_SITE_SERVER=${MW_SITE_SERVER}"                  >> ${CUS}
 echo "MW_SITE_NAME='${MW_SITE_NAME}'"                    >> ${CUS}
-
-echo "DONE generating configuration file directory"
+echo "DONE generating mediawiki-PRIVATE.php""
 
 
 echo ""; echo "*** Initial contents copied to template directory"
