@@ -8,7 +8,7 @@ TOP_DIR=${DIR}/..
 
 set -e
 
-rm ${TOP_DIR}/main.zip
+rm -f ${TOP_DIR}/main.zip
 
 echo ""; echo "*** Making a backup of the configuration file CONF.sh"
 cp ${DIR}/CONF.sh ${DIR}/CONF-backup.sh
