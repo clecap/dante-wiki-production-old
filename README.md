@@ -45,6 +45,11 @@ unzip main.zip
 cd dante-wiki-production-main
 ```
 
+Alternatively:
+```
+curl -L https://github.com/clecap/dante-wiki-production/archive/refs/heads/main.zip --output main.zip
+```
+
 Edit using your favorite editor, for example: ```vi CONF.sh                                   ```
 
 ```./install-dante.sh```
