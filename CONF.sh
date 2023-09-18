@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# password of the Dante Wiki user   Admin 
+# password of the Dante Wiki user   Admin  
 ADMIN_PASSWORD=adminpassword
 
 SITE_ACRONYM=acro
