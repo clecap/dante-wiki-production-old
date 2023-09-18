@@ -16,7 +16,7 @@ MYSQL_DUMP_PASSWORD=otherpassword
 # https://localhost:4443 or https://dante.informatik.uni-rostock.de
 MW_SITE_SERVER=https://localhost:4443/
 
-# currently NO blank in below name
+# currently NO blank in below name 
 MW_SITE_NAME="MatheWiki"
 
 #
